@@ -1,20 +1,22 @@
 package practice06;
 
-public class Person {
+public class Worker extends Person {
     private int age;
     private String name;
 
-    public Person(String name, int age) {
+    public Worker(String name, int age) {
         this.age = age;
         this.name = name;
     }
 
-    public Person() {
+    public Worker() {
     }
 
+    @Override
     public String introduce(){
-        return "My name is Tom. I am 21 years old.";
+        return super.introduce()+" I am a Worker. I have a job.";
     }
+
 
     public int getAge() {
         return age;
