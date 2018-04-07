@@ -44,10 +44,13 @@ public class Teacher extends Person implements IObserveClass{
             return super.introduce() + " I am a Teacher. I teach No Class.";
         } else {
             StringBuilder introduce = new StringBuilder(super.introduce() + " I am a Teacher. I teach Class ");
+            StringBuilder tmp = new StringBuilder();
             for (Klass klass: klasses) {
-                introduce.append(klass.getNumber()).append(", ");
+                tmp.append(klass.getNumber());
             }
-            introduce = introduce.deleteCharAt(introduce.toString().length()-1).deleteCharAt(introduce.toString().length()-1);
+            introduce.append(tmp.reverse());
+            introduce = introduce.insert(introduce.toString().length()-1,',');
+            introduce = introduce.insert(introduce.toString().length()-1,' ');
             return introduce.append(".").toString();
         }
     }
