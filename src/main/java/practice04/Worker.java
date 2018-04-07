@@ -14,7 +14,7 @@ public class Worker extends Person{
 
     @Override
     public String introduce(){
-        return super.introduce()+" I am a Worker. I have a job.";
+        return baseIntroduce()+" I am a Worker. I have a job.";
     }
 
 
