@@ -1,6 +1,6 @@
 package practice11;
 
-import java.util.HashSet;
+import java.util.*;
 
 public class Teacher extends Person implements IObserveClass{
     private int age;
@@ -43,12 +43,14 @@ public class Teacher extends Person implements IObserveClass{
         if (klasses == null) {
             return super.introduce() + " I am a Teacher. I teach No Class.";
         } else {
-            StringBuilder introduce = new StringBuilder(super.introduce() + " I am a Teacher. I teach Class ");
+            final StringBuilder introduce = new StringBuilder(super.introduce() + " I am a Teacher. I teach Class ");
+            List<Integer> list = new ArrayList<>();
             for (Klass klass : klasses) {
-                introduce.append(klass.getNumber()).append(", ");
+                list.add(klass.getNumber());
             }
-            introduce = introduce.delete(introduce.toString().length() - 2, introduce.toString().length());
-            return introduce.append(".").toString();
+            list.stream().sorted().forEach(e->introduce.append(e).append(", "));
+            StringBuilder result = introduce.delete(introduce.toString().length() - 2, introduce.toString().length());
+            return result.append(".").toString();
         }
     }
 
