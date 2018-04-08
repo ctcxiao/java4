@@ -1,6 +1,8 @@
 package practice10;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 public class Teacher extends Person {
     private int age;
@@ -25,12 +27,16 @@ public class Teacher extends Person {
         if (klasses == null) {
             return super.introduce() + " I am a Teacher. I teach No Class.";
         } else {
-            StringBuilder introduce = new StringBuilder(super.introduce() + " I am a Teacher. I teach Class ");
-            for (Klass klass: klasses) {
-                introduce.append(klass.getNumber()).append(", ");
+            final StringBuilder introduce = new StringBuilder(super.introduce() + " I am a Teacher. I teach Class ");
+
+            List<Integer> list = new ArrayList<>();
+            for (Klass klass : klasses) {
+                list.add(klass.getNumber());
             }
-            introduce = introduce.deleteCharAt(introduce.toString().length()-1).deleteCharAt(introduce.toString().length()-1);
-            return introduce.append(".").toString();
+            list.stream().sorted().forEach(e -> introduce.append(e).append(", "));
+            StringBuilder result = introduce.delete(introduce.toString().length() - 2, introduce.toString().length());
+
+            return result.append(".").toString();
         }
     }
 
