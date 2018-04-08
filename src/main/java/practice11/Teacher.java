@@ -19,10 +19,10 @@ public class Teacher extends Person implements IObserveClass{
         this.age = age;
         this.name = name;
         this.klasses = klasses;
-        init(klasses);
+        regiestThis(klasses);
     }
 
-    private void init(HashSet<Klass> klasses){
+    private void regiestThis(HashSet<Klass> klasses){
         for (Klass klass: klasses) {
             klass.getTeacherList().add(this);
         }
@@ -44,13 +44,10 @@ public class Teacher extends Person implements IObserveClass{
             return super.introduce() + " I am a Teacher. I teach No Class.";
         } else {
             StringBuilder introduce = new StringBuilder(super.introduce() + " I am a Teacher. I teach Class ");
-            StringBuilder tmp = new StringBuilder();
-            for (Klass klass: klasses) {
-                tmp.append(klass.getNumber());
+            for (Klass klass : klasses) {
+                introduce.append(klass.getNumber()).append(", ");
             }
-            introduce.append(tmp.reverse());
-            introduce = introduce.insert(introduce.toString().length()-1,',');
-            introduce = introduce.insert(introduce.toString().length()-1,' ');
+            introduce = introduce.delete(introduce.toString().length() - 2, introduce.toString().length());
             return introduce.append(".").toString();
         }
     }
