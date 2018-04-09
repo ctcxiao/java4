@@ -31,9 +31,9 @@ public class Teacher extends Person {
 
             List<Integer> list = new ArrayList<>();
             for (Klass klass : klasses) {
-                list.add(klass.getNumber());
+                introduce.append(klass.getNumber()).append(", ");
             }
-            list.stream().sorted().forEach(e -> introduce.append(e).append(", "));
+//            list.stream().sorted().forEach(e -> introduce.append(e).append(", "));
             StringBuilder result = introduce.delete(introduce.toString().length() - 2, introduce.toString().length());
 
             return result.append(".").toString();
