@@ -2,6 +2,7 @@ package practice10;
 
 public class Klass {
     private int number;
+    //todo where is isIn() method?
     private Student student;
 
     public Klass(int number) {

@@ -1,7 +1,5 @@
 package practice01;
 
-import java.util.stream.Stream;
-
 public class Person {
     private int age;
     private String name;
